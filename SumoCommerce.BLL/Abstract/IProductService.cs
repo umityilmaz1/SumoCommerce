@@ -10,6 +10,5 @@ namespace SumoCommerce.BLL.Abstract
 {
     public interface IProductService:IBaseService<Product>
     {
-        List<Product> GetListByFilter(Expression<Func<Product, bool>> filter);
     }
 }

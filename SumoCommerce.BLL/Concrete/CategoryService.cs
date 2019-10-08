@@ -4,6 +4,7 @@ using SumoCommerce.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -13,7 +14,6 @@ namespace SumoCommerce.BLL.Concrete
     {
 
         ICategoryDAL _categoryDAL;
-
         public CategoryService(ICategoryDAL categoryDAL)
         {
             _categoryDAL = categoryDAL;
@@ -23,26 +23,30 @@ namespace SumoCommerce.BLL.Concrete
         {
             return _categoryDAL.Add(entity) >0;
         }
-
+        public bool Update(Category entity)
+        {
+            return _categoryDAL.Update(entity) > 0;
+        }
         public bool DeleteByID(int entityID)
         {
             Category cat = GetByID(entityID);
             return _categoryDAL.Delete(cat) > 0;
         }
-
         public Category GetByID(int entityID)
         {
             return _categoryDAL.Get(a => a.ID == entityID);
         }
-
         public List<Category> GetList()
         {
             return _categoryDAL.GetAll().ToList();
         }
-
-        public bool Update(Category entity)
+        public Category GetByFilter(Expression<Func<Category, bool>> filter)
         {
-            return _categoryDAL.Update(entity) > 0;
+            return _categoryDAL.Get(filter);
+                }
+        public List<Category> GetListByFilter(Expression<Func<Category, bool>> filter)
+        {
+            return _categoryDAL.GetAll(filter).ToList();
         }
     }
 }

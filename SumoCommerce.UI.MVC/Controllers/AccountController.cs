@@ -77,7 +77,7 @@ namespace SumoCommerce.UI.MVC.Controllers
 
         public bool GetUserByLoginData(LoginViewModel model)
         {
-            User currentUser = _userService.GetByLogin(model.Mail, model.Password);
+            User currentUser = _userService.GetByFilter(a => a.Mail == model.Mail && a.Password == model.Password);
 
             if (currentUser != null && currentUser.IsActive == true)
             {

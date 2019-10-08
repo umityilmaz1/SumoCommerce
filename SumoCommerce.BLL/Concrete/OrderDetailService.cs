@@ -4,6 +4,7 @@ using SumoCommerce.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -16,30 +17,35 @@ namespace SumoCommerce.BLL.Concrete
         {
             _orderDetailDal = orderDetailDal;
         }
+
         public bool Add(OrderDetail entity)
         {
             return _orderDetailDal.Add(entity) > 0;
         }
-
+        public bool Update(OrderDetail entity)
+        {
+            return _orderDetailDal.Update(entity) > 0;
+        }
         public bool DeleteByID(int entityID)
         {
             OrderDetail deleted = GetByID(entityID);
             return _orderDetailDal.Delete(deleted) > 0;
         }
-
         public OrderDetail GetByID(int entityID)
         {
             return _orderDetailDal.Get(a => a.ID == entityID);
         }
-
         public List<OrderDetail> GetList()
         {
             return _orderDetailDal.GetAll().ToList();
         }
-
-        public bool Update(OrderDetail entity)
+        public OrderDetail GetByFilter(Expression<Func<OrderDetail, bool>> filter)
         {
-            return _orderDetailDal.Update(entity) > 0;
+            return _orderDetailDal.Get(filter);
+        }
+        public List<OrderDetail> GetListByFilter(Expression<Func<OrderDetail, bool>> filter)
+        {
+            return _orderDetailDal.GetAll(filter).ToList();
         }
     }
 }

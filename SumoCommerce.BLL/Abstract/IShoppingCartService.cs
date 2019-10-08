@@ -10,7 +10,5 @@ namespace SumoCommerce.BLL.Abstract
 {
     public interface IShoppingCartService:IBaseService<ShoppingCart>
     {
-        ShoppingCart GetByFilter(Expression<Func<ShoppingCart, bool>> filter);
-        List<ShoppingCart> GetListByFilter(Expression<Func<ShoppingCart, bool>> filter);
     }
 }

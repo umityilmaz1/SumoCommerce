@@ -17,9 +17,14 @@ namespace SumoCommerce.BLL.Concrete
         {
             _countyDal = countyDal;
         }
+
         public bool Add(County entity)
         {
             return _countyDal.Add(entity) > 0;
+        }
+        public bool Update(County entity)
+        {
+            return _countyDal.Update(entity) > 0;
         }
         public bool DeleteByID(int entityID)
         {
@@ -34,21 +39,13 @@ namespace SumoCommerce.BLL.Concrete
         {
             return _countyDal.GetAll().ToList();
         }
-        public bool Update(County entity)
-        {
-            return _countyDal.Update(entity) > 0;
-        }
         public County GetByFilter(Expression<Func<County, bool>> filter)
         {
-            County newCounty = (County)_countyDal.GetAll(filter);
-            return newCounty;
+            return _countyDal.Get(filter);
         }
         public List<County> GetListByFilter(Expression<Func<County, bool>> filter)
         {
-            List<County> newCountyList = (List<County>)_countyDal.GetAll(filter);
-            return newCountyList;
+            return _countyDal.GetAll(filter).ToList();
         }
-
-
     }
 }
