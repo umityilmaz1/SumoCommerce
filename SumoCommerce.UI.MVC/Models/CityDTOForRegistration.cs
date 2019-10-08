@@ -5,7 +5,7 @@ using System.Web;
 
 namespace SumoCommerce.UI.MVC.Models
 {
-    public class CityViewModel
+    public class CityDTOForRegistration
     {
         public int ID { get; set; }
         public string CityName { get; set; }

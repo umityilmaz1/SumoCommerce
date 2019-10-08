@@ -10,6 +10,7 @@ namespace SumoCommerce.BLL.Abstract
 {
     public interface ICountyService:IBaseService<County>
     {
-        List<County> GetByFilter(Expression<Func<County, bool>> filter);
+        County GetByFilter(Expression<Func<County, bool>> filter);
+        List<County> GetListByFilter(Expression<Func<County, bool>> filter);
     }
 }

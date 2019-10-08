@@ -16,26 +16,10 @@ namespace SumoCommerce.UI.MVC.Controllers
         {
             _countyService = countyService;
         }
-
         public ActionResult List()
         {
             return View(_countyService.GetList());
         }
-
-        public JsonResult GetByCityID(int id) //Bu metoda dokunmayalım
-        {
-            List<County> countyList = _countyService.GetByFilter(a => a.CityID == id);
-
-            List<CountyViewModel> countyViewModelList = new List<CountyViewModel>();
-
-            foreach (County item in countyList)
-            {
-                countyViewModelList.Add(new CountyViewModel() { ID = item.ID, CountyName = item.CountyName });
-            }
-
-            return Json(countyViewModelList, JsonRequestBehavior.AllowGet);
-        }
-
         public ActionResult Add(County County)
         {
             return View(_countyService.Add(County));
@@ -52,5 +36,19 @@ namespace SumoCommerce.UI.MVC.Controllers
         {
             return View(_countyService.GetByID(CountyID));
         }
+        public JsonResult GetByCityID(int id)
+        {
+            List<County> countyList = _countyService.GetListByFilter(a => a.CityID == id);
+
+            List<CountyDTOForRegistration> countyDTOForRegistrationList = new List<CountyDTOForRegistration>();
+
+            foreach (County item in countyList)
+            {
+                countyDTOForRegistrationList.Add(new CountyDTOForRegistration() { ID = item.ID, CountyName = item.CountyName });
+            }
+
+            return Json(countyDTOForRegistrationList, JsonRequestBehavior.AllowGet);
+        }
+
     }
 }

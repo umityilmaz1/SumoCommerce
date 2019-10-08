@@ -23,20 +23,6 @@ namespace SumoCommerce.UI.MVC.Controllers
             return View(_cityService.GetList());
         }
 
-        public JsonResult ListWithDTO() //Bu metoda dokunmayalım
-        {
-            List<City> cityList = _cityService.GetList();
-
-            List<CityViewModel> cityViewModelList = new List<CityViewModel>();
-
-            foreach (City item in cityList)
-            {
-                cityViewModelList.Add(new CityViewModel() { ID = item.ID, CityName = item.CityName });
-            }
-
-            return Json(cityViewModelList, JsonRequestBehavior.AllowGet);
-        }
-
         public ActionResult Add(City City)
         {
             return View(_cityService.Add(City));
@@ -52,6 +38,20 @@ namespace SumoCommerce.UI.MVC.Controllers
         public ActionResult GetByID(int CityID)
         {
             return View(_cityService.GetByID(CityID));
+        }
+
+        public JsonResult ListDTO()
+        {
+            List<City> cityList = _cityService.GetList();
+
+            List<CityDTOForRegistration> cityDTOForRegistrationList = new List<CityDTOForRegistration>();
+
+            foreach (City item in cityList)
+            {
+                cityDTOForRegistrationList.Add(new CityDTOForRegistration() { ID = item.ID, CityName = item.CityName });
+            }
+
+            return Json(cityDTOForRegistrationList, JsonRequestBehavior.AllowGet);
         }
     }
 }
