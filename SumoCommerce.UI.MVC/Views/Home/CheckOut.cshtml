@@ -1,0 +1,130 @@
+﻿@{
+    ViewBag.Title = "Checkout";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+<!-- BREADCRUMB -->
+<div id="breadcrumb">
+    <div class="container">
+        <ul class="breadcrumb">
+            <li><a href="#">Anasayfa</a></li>
+            <li class="active">Ödeme</li>
+        </ul>
+    </div>
+</div>
+<!-- /BREADCRUMB -->
+<!-- section -->
+<div class="section">
+    <!-- container -->
+    <div class="container">
+        <!-- row -->
+        <div class="row">
+            <form id="checkout-form" class="clearfix">
+                <div class="col-md-6">
+                    <div class="billing-details">
+                        <div class="section-title">
+                            <h3 class="title">ÖDEME BİLGİLERİ</h3>
+                        </div>
+                        <div class="form-group">
+                            <input class="input" type="text" name="first-name" placeholder="Kart Sahibinin Adı - Soyadı">
+                        </div>
+                        <div class="form-group">
+                            <input class="input" type="text" name="card-number" placeholder="Kart Numarası">
+                        </div>
+                        <div class="form-group">
+                            <input class="input" type="text" name="expriation-date" placeholder="Kart Son Kullanma Tarihi">
+                        </div>
+                        <div class="form-group">
+                            <input class="input" type="text" name="cvc" placeholder="CVC">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="shiping-methods">
+                        <div class="section-title">
+                            <h4 class="title">KARGO SEÇİMİ</h4>
+                        </div>
+                        <div class="input-checkbox">
+                            <input type="radio" name="shipping" id="shipping-1" checked>
+                            <label for="shipping-1">Ücretsiz Kargo -  0.00 TL</label>
+                            <div class="caption">
+                                <p>Yurtiçi Kargo<p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="payments-methods">
+                        <div class="section-title">
+                            <h4 class="title">Ödeme Yöntemleri</h4>
+                        </div>
+                        <div class="input-checkbox">
+                            <input type="radio" name="payments" id="payments-1" checked>
+                            <label for="payments-1">Kredi kartı ile ödeme</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="order-summary clearfix">
+                        <div class="section-title">
+                            <h3 class="title">Sepet</h3>
+                        </div>
+                        <table class="shopping-cart-table table">
+                            <thead>
+                                <tr>
+                                    <th>Ürün</th>
+                                    <th></th>
+                                    <th class="text-center">FİYAT</th>
+                                    <th class="text-center">ADET</th>
+                                    <th class="text-center">TOPLAM</th>
+                                    <th class="text-right"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="thumb"><img src="./img/thumb-product01.jpg" alt=""></td>
+                                    <td class="details">
+                                        <a href="#">Product Name Goes Here</a>
+                                    </td>
+                                    <td class="price text-center"><strong>$32.50</strong><br></td>
+                                    <td class="qty text-center"><input class="input" type="number" value="1"></td>
+                                    <td class="total text-center"><strong class="primary-color">$32.50</strong></td>
+                                    <td class="text-right"><button class="main-btn icon-btn"><i class="fa fa-close"></i></button></td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th class="empty" colspan="3"></th>
+                                    <th>SUBTOTAL</th>
+                                    <th colspan="2" class="sub-total">$97.50</th>
+                                </tr>
+                                <tr>
+                                    <th class="empty" colspan="3"></th>
+                                    <th>SHIPING</th>
+                                    <td colspan="2">Free Shipping</td>
+                                </tr>
+                                <tr>
+                                    <th class="empty" colspan="3"></th>
+                                    <th>TOTAL</th>
+                                    <th colspan="2" class="total">$97.50</th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                        <div class="pull-right">
+                            <button class="primary-btn">Place Order</button>
+                        </div>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+        <!-- /row -->
+    </div>
+    <!-- /container -->
+</div>
+<!-- /section -->
+
+@section scripts{
+    
+    }

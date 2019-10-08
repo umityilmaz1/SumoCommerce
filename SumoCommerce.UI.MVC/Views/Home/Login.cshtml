@@ -1,0 +1,209 @@
+﻿@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+
+<div class="container col-md-6 col-md-offset-3" style="margin-top:10px;margin-bottom:10px">
+    <div class="row" style="height:650px">
+        <div class="col-md-4" style="height:100%;padding:0">
+            <img src="~/Img/login-registration.jpg" style="width:100%; height:100%; border-radius:5px" />
+        </div>
+        <div class="col-md-8" style="height:100%;">
+            <div class="row" style="height:100%">
+                <div class="panel sumo-panel-login" style="height:100%">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <a href="#" class="active" id="sumo-login-form-link">
+                                    GİRİŞ
+                                </a>
+                            </div>
+                            <div class="col-md-6">
+                                <a href="#" id="sumo-register-form-link">KAYIT OL</a>
+                            </div>
+                        </div>
+                        <hr />
+                    </div>
+                    <div class="panel-body" style="height:100%">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <form id="login-form" action="#" method="post" role="form" style="display:block">
+                                    <div class="alert alert-success hidden" id="login-success-alert-container">
+                                        Başarıyla giriş yapıldı.
+                                        Günlüğe yönlendiriliyorsunuz...
+                                    </div>
+                                    <div class="alert alert-danger hidden" id="login-error-alert-container">
+                                        <ul id="login-error-list"></ul>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="kullanıcı adı" value="" />
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="şifre" />
+
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-sm-6 col-sm-offset-3">
+                                                <input type="button" name="login-submit" id="login-submit" tabindex="3" class="form-control btn btn-login" value="GİRİŞ YAP" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                                <form id="register-form" action="#" method="post" role="form" style="display:none">
+                                    <div class="alert alert-success hidden" id="register-success-alert-container">
+                                        Kaydınız başarıyla gerçekleştirildi.
+                                        Giriş yapabilirsiniz.
+                                    </div>
+                                    <div class="alert alert-danger hidden" id="register-error-alert-container">
+                                        <ul id="register-error-list"></ul>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" name="name" id="name" tabindex="1" class="form-control" placeholder="Adınızı giriniz" value="" />
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" name="soyad" id="surname" tabindex="2" class="form-control" placeholder="Soyadınızı giriniz" value="" />
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="email" name="eposta" id="email" tabindex="3" class="form-control" placeholder="E-posta adresinizi giriniz" value="" />
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" name="confirm-password" id="confirm-password" tabindex="4" class="form-control" placeholder="Şifrenizi giriniz" value="" />
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" name="confirm-password" id="re-confirm-password" tabindex="5" class="form-control" placeholder="Şifrenizi tekrar giriniz" value="" />
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="date" name="birthdate" id="birthdate" tabindex="6" class="form-control" placeholder="Doğum tarihinizi giriniz" value="" />
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" name="phone-number" id="phone-number" tabindex="7" class="form-control" placeholder="Telefon Numaranızı giriniz" value="" />
+                                    </div>
+                                    <div class="form-group">
+                                        <select id="City" tabindex="8">
+                                            <option value="">İl Seçiniz</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group" tabindex="9">
+                                        <select id="County">
+                                            <option value="">İlçe Seçiniz</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" name="address" id="address" tabindex="10" class="form-control" placeholder="Adresinizi giriniz" value="" />
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-sm-6 col-sm-offset-3">
+                                                <input type="button" name="register-submit" id="register-submit" tabindex="11" class="form-control btn btn-register" value="KAYIT OL" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $("#sumo-login-form-link").click(function () {
+                $("#register-form").css("display", "none");
+                $("#login-form").css("display", "block");
+            });
+
+            $("#sumo-register-form-link").click(function () {
+                $("#login-form").css("display", "none");
+                $("#register-form").css("display", "block");
+            });
+
+            $.ajax({
+                url: "/City/ListWithDTO",
+                dataType: "json",
+                success: function (data) {
+                    $.each(data, function (index, value) {
+                        $("#City").append("<option value=" + value.ID + ">" + value.CityName + "</option>");
+                    });
+                },
+                error: function () {
+                    alert("Sistemsel bir sorun oluştu. Kayıt için il listesi yüklenemedi.");
+                }
+            });
+
+            $("#City").change(function () {
+                if ($("City").val() != "İl Seçiniz") {
+                    $.ajax({
+                        url: "/County/GetByCityID/" + $("#City").val(),
+                        dataType: "json",
+                        success: function (data) {
+                            $("#County").html("<option value=0>İlçe Seçiniz</option>");
+                            $.each(data, function (index, value) {
+                                $("#County").append("<option value=" + value.ID + ">" + value.CountyName + "</option>");
+                            });
+                        },
+                        error: function () {
+                            alert("Sistemsel bir sorun oluştu. Kayıt için ilçe listesi yüklenemedi.");
+                        }
+                    });
+                }
+            });
+
+            $("#login-submit").click(function () {
+                $.ajax({
+                    url: "/Account/GetUserByLoginData",
+                    data: {
+                        Mail: $("#username").val(),
+                        Password: $("#password").val()
+                    },
+                    success: function (data) {
+                        if (data == "True") {
+                            window.location.href = "/Home/Index";
+                        }
+                        else {
+                            alert("Hatalı kullanıcı adı veya şifre girdiniz.");
+                        }
+                    },
+                    error: function () {
+                        alert("Sistemsel bir sorun oluştu. Giriş yapılamadı.");
+                    }
+                });
+            });
+
+            $("#register-submit").click(function () {
+                $.ajax({
+                    url: "/Account/Add",
+                    data: {
+                        Name: $("#name").val(),
+                        Surname: $("#surname").val(),
+                        Email: $("#email").val(),
+                        Password: $("#confirm-password").val(),
+                        BirthDate: $("#birthdate").val(),
+                        PhoneNumber: $("#phone-number").val(),
+                        CityID: $("#City").val(),
+                        CountyID: $("#County").val(),
+                        Address: $("#address").val()
+                    },
+                    success: function (data) {
+                        if (data) {
+                            alert(data);
+                            window.location.href = "/Home/Login"
+                        }
+                        else {
+                            alert(data);
+                        }
+                    },
+                    error: function (xhr) {
+                        alert(xhr.statusText);
+                    }
+                });
+            });
+
+        });
+    </script>
+}

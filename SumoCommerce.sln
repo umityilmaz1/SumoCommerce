@@ -1,0 +1,63 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29230.47
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SumoCommerce.Core", "SumoCommerce.Core\SumoCommerce.Core.csproj", "{81B0B646-6D97-4B69-A908-43A025129007}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SumoCommerce.DAL", "SumoCommerce.DAL\SumoCommerce.DAL.csproj", "{BFD390ED-F3E7-4DF6-B25C-EE10214CE6A8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SumoCommerce.Model", "SumoCommerce.Model\SumoCommerce.Model.csproj", "{CA0E2E60-24B9-45E8-BE91-B8C99E4DE69E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SumoCommerce.BLL", "SumoCommerce.BLL\SumoCommerce.BLL.csproj", "{132CC69F-D04F-4E40-ABD7-0E234EA06B5E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SumoCommerce.UI.MVC", "SumoCommerce.UI.MVC\SumoCommerce.UI.MVC.csproj", "{B5553F68-12BE-47FB-97F3-C6527DC2E608}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SumoCommerce.WebAPI", "SumoCommerce.WebAPI\SumoCommerce.WebAPI.csproj", "{6BAEDE4D-7F2D-434F-AFEB-F173C12C7493}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D60462F6-04A2-49D5-B44C-17E4A54AB96A}"
+	ProjectSection(SolutionItems) = preProject
+		il_ilceler.xlsx = il_ilceler.xlsx
+		ililce.xlsx = ililce.xlsx
+		seedyedek.txt = seedyedek.txt
+		turkiye-il-listesi.xlsx = turkiye-il-listesi.xlsx
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{81B0B646-6D97-4B69-A908-43A025129007}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81B0B646-6D97-4B69-A908-43A025129007}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81B0B646-6D97-4B69-A908-43A025129007}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81B0B646-6D97-4B69-A908-43A025129007}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BFD390ED-F3E7-4DF6-B25C-EE10214CE6A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BFD390ED-F3E7-4DF6-B25C-EE10214CE6A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BFD390ED-F3E7-4DF6-B25C-EE10214CE6A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BFD390ED-F3E7-4DF6-B25C-EE10214CE6A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CA0E2E60-24B9-45E8-BE91-B8C99E4DE69E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA0E2E60-24B9-45E8-BE91-B8C99E4DE69E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA0E2E60-24B9-45E8-BE91-B8C99E4DE69E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA0E2E60-24B9-45E8-BE91-B8C99E4DE69E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{132CC69F-D04F-4E40-ABD7-0E234EA06B5E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{132CC69F-D04F-4E40-ABD7-0E234EA06B5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{132CC69F-D04F-4E40-ABD7-0E234EA06B5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{132CC69F-D04F-4E40-ABD7-0E234EA06B5E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5553F68-12BE-47FB-97F3-C6527DC2E608}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5553F68-12BE-47FB-97F3-C6527DC2E608}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5553F68-12BE-47FB-97F3-C6527DC2E608}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5553F68-12BE-47FB-97F3-C6527DC2E608}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6BAEDE4D-7F2D-434F-AFEB-F173C12C7493}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6BAEDE4D-7F2D-434F-AFEB-F173C12C7493}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6BAEDE4D-7F2D-434F-AFEB-F173C12C7493}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6BAEDE4D-7F2D-434F-AFEB-F173C12C7493}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5F4ABF15-A406-4F73-8152-290E07D7FD7B}
+	EndGlobalSection
+EndGlobal

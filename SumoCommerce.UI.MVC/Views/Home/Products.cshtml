@@ -1,0 +1,255 @@
+﻿@using SumoCommerce.Model
+@model List<Product>
+
+@{
+    ViewBag.Title = "Products";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+<!-- BREADCRUMB -->
+<div id="breadcrumb">
+    <div class="container">
+        <ul class="breadcrumb">
+            <li><a href="#">Anasayfa</a></li>
+            <li class="active">Ürünler</li>
+        </ul>
+    </div>
+</div>
+<!-- /BREADCRUMB -->
+<!-- section -->
+<div class="section">
+    <!-- container -->
+    <div class="container">
+        <!-- row -->
+        <div class="row">
+            <!-- ASIDE -->
+            <div id="aside" class="col-md-3">
+                <!-- aside widget -->
+                <div class="aside">
+                    <h3 class="aside-title">Shop by:</h3>
+                    <ul class="filter-list">
+                        <li><span class="text-uppercase">color:</span></li>
+                        <li><a href="#" style="color:#FFF; background-color:#8A2454;">Camelot</a></li>
+                        <li><a href="#" style="color:#FFF; background-color:#475984;">East Bay</a></li>
+                        <li><a href="#" style="color:#FFF; background-color:#BF6989;">Tapestry</a></li>
+                        <li><a href="#" style="color:#FFF; background-color:#9A54D8;">Medium Purple</a></li>
+                    </ul>
+
+                    <ul class="filter-list">
+                        <li><span class="text-uppercase">Size:</span></li>
+                        <li><a href="#">X</a></li>
+                        <li><a href="#">XL</a></li>
+                    </ul>
+
+                    <ul class="filter-list">
+                        <li><span class="text-uppercase">Price:</span></li>
+                        <li><a href="#">MIN: $20.00</a></li>
+                        <li><a href="#">MAX: $120.00</a></li>
+                    </ul>
+
+                    <ul class="filter-list">
+                        <li><span class="text-uppercase">Gender:</span></li>
+                        <li><a href="#">Men</a></li>
+                    </ul>
+
+                    <button class="primary-btn">Clear All</button>
+                </div>
+                <!-- /aside widget -->
+                <!-- aside widget -->
+                <div class="aside">
+                    <h3 class="aside-title">Filter by Price</h3>
+                    <div id="price-slider"></div>
+                </div>
+                <!-- aside widget -->
+                <!-- aside widget -->
+                <div class="aside">
+                    <h3 class="aside-title">Filter By Color:</h3>
+                    <ul class="color-option">
+                        <li><a href="#" style="background-color:#475984;"></a></li>
+                        <li><a href="#" style="background-color:#8A2454;"></a></li>
+                        <li class="active"><a href="#" style="background-color:#BF6989;"></a></li>
+                        <li><a href="#" style="background-color:#9A54D8;"></a></li>
+                        <li><a href="#" style="background-color:#675F52;"></a></li>
+                        <li><a href="#" style="background-color:#050505;"></a></li>
+                        <li><a href="#" style="background-color:#D5B47B;"></a></li>
+                    </ul>
+                </div>
+                <!-- /aside widget -->
+                <!-- aside widget -->
+                <div class="aside">
+                    <h3 class="aside-title">Filter By Size:</h3>
+                    <ul class="size-option">
+                        <li class="active"><a href="#">S</a></li>
+                        <li class="active"><a href="#">XL</a></li>
+                        <li><a href="#">SL</a></li>
+                    </ul>
+                </div>
+                <!-- /aside widget -->
+                <!-- aside widget -->
+                <div class="aside">
+                    <h3 class="aside-title">Filter by Brand</h3>
+                    <ul class="list-links">
+                        <li><a href="#">Nike</a></li>
+                        <li><a href="#">Adidas</a></li>
+                        <li><a href="#">Polo</a></li>
+                        <li><a href="#">Lacost</a></li>
+                    </ul>
+                </div>
+                <!-- /aside widget -->
+                <!-- aside widget -->
+                <div class="aside">
+                    <h3 class="aside-title">Filter by Gender</h3>
+                    <ul class="list-links">
+                        <li class="active"><a href="#">Men</a></li>
+                        <li><a href="#">Women</a></li>
+                    </ul>
+                </div>
+                <!-- /aside widget -->
+            </div>
+            <!-- /ASIDE -->
+            <!-- MAIN -->
+            <div id="main" class="col-md-9">
+                <!-- store top filter -->
+                <div class="store-filter clearfix">
+                    <div class="pull-left">
+                        <div class="sort-filter">
+                            <span class="text-uppercase">Sırala:</span>
+                            <select id="productOrder" class="input">
+                                <option value="0" selected>Sıralama Seçiniz</option>
+                                <option value="0">Fiyat - Artan</option>
+                                <option value="0">Fiyat - Azalan</option>
+                                @*<option value="0">En Yeni Ürünler</option>*@
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <!-- /store top filter -->
+                <!-- STORE -->
+                <div id="store">
+                    <!-- row -->
+                    <div class="row" style="display:inline-flex;flex-wrap:wrap">
+                        <!-- Products -->
+                        @foreach (Product item in Model as List<Product>)
+                        {
+                            <div class='col-md-4 col-sm-6 col-xs-6'>
+                                <div class='product product-single'>
+                                    <div class='product-thumb'>
+                                        <button class='productDetailButton main-btn quick-view' data-productID="@item.ID"><i class='fa fa-search-plus'></i> Ürün Detayı</button>
+                                        <img src='@item.Image' alt='' />
+                                    </div>
+                                    <div class='product-body'>
+                                        <h3 class='product-price'>@item.Price</h3><h3> TL</h3>
+                                        <h2 class='product-name'><a href='#'>@item.ProductName</a></h2>
+                                        <div class='product-btns'>
+                                            <button class='addToCartButton primary-btn add-to-cart' data-productID="@item.ID"><i class='fa fa-shopping-cart'></i> Sepete Ekle</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                @*<input type="hidden" id="createdDate" value="@item.CreatedDate" />*@
+                                @*<input type="hidden" id="sellsVolume" value="@item.SellsVolume" />*@
+                            </div>
+                        }
+                        <!-- /Products -->
+                    </div>
+                    <!-- /row -->
+                </div>
+                <!-- /STORE -->
+                <!-- store bottom filter -->
+                <div class="store-filter clearfix">
+                    <div class="pull-right">
+                        <div class="page-filter">
+                            <span class="text-uppercase">Sayfadaki Ürün Adedi:</span>
+                            <select class="input">
+                                <option value="0">10</option>
+                                <option value="1">20</option>
+                                <option value="2">30</option>
+                            </select>
+                        </div>
+                        <ul class="store-pages">
+                            <li><span class="text-uppercase">Sayfa:</span></li>
+                            <li class="active">1</li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#"><i class="fa fa-caret-right"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- /store bottom filter -->
+            </div>
+            <!-- /MAIN -->
+        </div>
+        <!-- /row -->
+    </div>
+    <!-- /container -->
+</div>
+<!-- /section -->
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $(".productDetailButton").on("click", function () {
+                window.location.href = "/Home/ProductDetail/" + $(this).attr("data-productID");
+            });
+
+            $(".addToCartButton").click(function () {
+                $.ajax({
+                    url: "/ShoppingCart/Add",
+                    data: {
+                        ProductID: $(this).attr("data-productID"),
+                        Quantity: 1,
+                        UserID: @Session["userID"]
+                    },
+                    success: function (data) {
+                        if (data) {
+                            alert("Ürün sepete eklendi");
+                        }
+                        else {
+                            alert("Kullanıcı kaynaklı bir hata meydana geldi.");
+                        }
+                    },
+                    error: function () {
+                        alert("Sistem kaynaklı bir hata meydana geldi.");
+                    }
+                });
+            });
+
+            $("#productOrder").change(function () {
+
+                var productList = $("#store .row > div");
+
+                if ($("#productOrder option:selected").html() == "Fiyat - Artan") {
+                    var newList = productList.sort(function (a, b) {
+                        return parseInt($(a).find("h3.product-price").text(), 10) > parseInt($(b).find("h3.product-price").text(), 10) ? 1 : -1
+                    });
+
+                    $("#store .row").html("");
+
+                    $.each(newList, function (index, value) {
+                        $("#store .row").append(value);
+                    });
+                }
+                else if ($("#productOrder option:selected").html() == "Fiyat - Azalan") {
+                    var newList = productList.sort(function (a, b) { return parseInt($(a).find("h3.product-price").text(), 10) < parseInt($(b).find("h3.product-price").text(), 10) ? 1 : -1 });
+
+                    $("#store .row").html("");
+
+                    $.each(newList, function (index, value) {
+                        $("#store .row").append(value);
+                    });
+                }
+                else if ($("#productOrder option:selected").html() == "En Yeni Ürünler") {
+                    var newList = productList.sort(function (a, b) { return $(a).find("#createdDate").val() > $(b).find("#createdDate").val() ? 1 : -1 });
+
+                    $("#store .row").html("");
+
+                    $.each(newList, function (index, value) {
+                        $("#store .row").append(value);
+                    });
+                }
+                else if ($("#productOrder option:selected").html() == "En Çok Satanlar") {
+                    //bura dolacak
+                }
+            });
+        });
+    </script>
+}

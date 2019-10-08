@@ -1,0 +1,89 @@
+﻿@using SumoCommerce.Model
+@model Product
+
+@{
+    ViewBag.Title = "ProductDetail";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+<div id="breadcrumb">
+    <div class="container">
+        <ul class="breadcrumb">
+            <li><a href="#">Anasayfa</a></li>
+            <li><a href="#">Ürünler</a></li>
+            <li><a href="#">@Model.Category.CategoryName</a></li>
+            <li class="active">@Model.ProductName</li>
+        </ul>
+    </div>
+</div>
+<div class="section">
+    <div class="container">
+        <div class="row">
+            <div class="product product-details clearfix">
+                <div class="col-md-6">
+                    <div class="product-image" style="padding:0;width:455px;height:300px;text-align:center">
+                        <img src="@Model.Image" style="max-width:100%;max-height:100%;" />
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="product-body">
+                        <h2 class="product-name">@Model.ProductName</h2>
+                        <h3 class="product-price">@Model.Price TL</h3>
+                        <p class="product-stock"><strong>Stok :</strong> @Model.Stock</p>
+                        <p class="product-brand"><strong>Marka :</strong> @Model.Brand</p>
+                        <div class="product-btns">
+                            <div class="qty-input">
+                                <span class="text-uppercase">Adet : </span>
+                                <input id="quantity" class="input" type="number" min="1" value="1" style="margin-left:5px">
+                            </div>
+                            <button id="addToCart" class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Sepete Ekle</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="product-tab">
+                        <ul class="tab-nav">
+                            <li><a data-toggle="tab" href="#tab1">Ürün Açıklaması</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div id="tab1" class="tab-pane fade in active">
+                                <p class="product-description">
+                                    @Model.Description
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script>
+
+        $("#addToCart").click(function () {
+            $.ajax({
+                url: "/ShoppingCart/Add",
+                data: {
+                    ProductID: @Model.ID,
+                    Quantity: $("#quantity").val(),
+                    UserID: @Session["userID"]
+                },
+                success: function (data) {
+                    if (data) {
+                        alert("Ürün sepete eklendi");
+                    }
+                    else {
+                        alert("Kullanıcı kaynaklı bir hata meydana geldi.");
+                    }
+                },
+                error: function () {
+                    alert("Sistem kaynaklı bir hata meydana geldi.");
+                }
+            });
+        });
+
+
+    </script>
+}
